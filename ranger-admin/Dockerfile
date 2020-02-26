@@ -44,7 +44,8 @@ RUN git clone http://github.com/apache/ranger.git -b master
 
  # Remove -DskipTests if unit tests are to be included - build the code...
 WORKDIR /root/ranger
-RUN mvn -DskipTests=true clean compile package install assembly:assembly
+RUN mvn clean compile package assembly:assembly install -DskipTests -Drat.skip=true
+#RUN mvn -DskipTests=true clean compile package install assembly:assembly
 
 # We have now built the latest ranger from source - let's unpack and setup the admin server & UI
 
